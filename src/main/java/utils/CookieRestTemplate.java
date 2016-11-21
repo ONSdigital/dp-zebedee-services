@@ -1,4 +1,4 @@
-package teamservice;
+package utils;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;

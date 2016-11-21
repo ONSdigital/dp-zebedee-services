@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import userservice.UserAccountService;
+import userservice.repositories.UserDetailsRepository;
 
 @Configuration
 public class VaultConfiguration {
@@ -17,7 +18,8 @@ public class VaultConfiguration {
     }
 
     @Bean
-    UserAccountService vaultService(@Autowired String vaultId) throws VaultException {
-        return new UserAccountService(vaultId);
+    UserAccountService vaultService(@Autowired String vaultId,
+                                    @Autowired UserDetailsRepository userDetailsRepository) throws VaultException {
+        return new UserAccountService(vaultId, userDetailsRepository);
     }
 }

@@ -23,7 +23,6 @@ public class UserController {
     @Autowired
     public UserController(UserAccountService vaultService) {
         this.vaultService = vaultService;
-
     }
 
     @RequestMapping("/user")
@@ -76,10 +75,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user/token/{token}/")
-    public ResponseEntity<Permission> getPermissionsFromToken(final @PathVariable String token) throws VaultException {
-        final Permission permission = new Permission();
-        permission.setEditor(true);
-        permission.setAdmin(true);
-        return new ResponseEntity(permission, HttpStatus.OK);
+    public ResponseEntity<String> getPermissionsFromToken(final @PathVariable String token) throws VaultException {
+
+        return new ResponseEntity(vaultService.getPermissionFromToken(token), HttpStatus.OK);
     }
 }

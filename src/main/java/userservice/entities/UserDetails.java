@@ -1,21 +1,36 @@
 package userservice.entities;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class UserDetails {
 
-    private final String email;
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
 
-    private final String username;
+    private String email;
 
-    public UserDetails(final String email) {
+    private String name;
+
+    public UserDetails() {
+
+    }
+
+    public UserDetails(final String email, final String name) {
         this.email = email.replace("$", "@");
-        this.username = "TODO";
+        this.name = name;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 }

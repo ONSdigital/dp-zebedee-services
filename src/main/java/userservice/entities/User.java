@@ -4,6 +4,8 @@ public class User {
 
     private String email;
 
+    private String name;
+
     private String password;
 
     private boolean isAdmin;
@@ -50,5 +52,13 @@ public class User {
 
     public void setIsDataVisPublisher(boolean dataVisPublisher) {
         isDataVisPublisher = dataVisPublisher;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

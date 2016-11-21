@@ -3,6 +3,8 @@ package teamservice;
 
 import org.springframework.web.client.RestTemplate;
 import teamservice.entities.TeamList;
+import utils.CookieRestTemplate;
+import utils.VaultPolicy;
 
 public class Teams {
 
