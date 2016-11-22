@@ -4,17 +4,17 @@ package teamservice.entities;
 import java.util.List;
 
 public class TeamList {
-    private List<String> teams;
+    private List<Team> teams;
 
-    public TeamList(List<String> teams) {
+    public TeamList(List<Team> teams) {
         this.teams = teams;
     }
 
-    public List<String> getTeams() {
+    public List<Team> getTeams() {
         return teams;
     }
 
-    public void setTeams(List<String> teams) {
+    public void setTeams(List<Team> teams) {
         this.teams = teams;
     }
 }
