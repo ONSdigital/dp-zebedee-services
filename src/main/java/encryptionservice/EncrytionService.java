@@ -5,6 +5,7 @@ import com.bettercloud.vault.VaultConfig;
 import com.bettercloud.vault.VaultException;
 import com.bettercloud.vault.response.LogicalResponse;
 import encryptionservice.entities.Content;
+import encryptionservice.entities.Key;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -27,6 +28,10 @@ public class EncrytionService {
         LogicalResponse response = vaultFactory(token).logical().write("transit/decrypt/default", options);
         content.setData(response.getData().get("plaintext"));
         return content;
+    }
+
+    public void createKey(final Key key, final String token) throws VaultException {
+        vaultFactory(token).logical().write("transit/keys/" + key.getCollectionId(), new HashMap<>());
     }
 
     private Vault vaultFactory(final String token) throws VaultException {

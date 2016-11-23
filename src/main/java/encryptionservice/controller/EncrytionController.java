@@ -3,6 +3,7 @@ package encryptionservice.controller;
 import com.bettercloud.vault.VaultException;
 import encryptionservice.EncrytionService;
 import encryptionservice.entities.Content;
+import encryptionservice.entities.Key;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,11 @@ public class EncrytionController {
     @Autowired
     public EncrytionController(final EncrytionService encrytionService) {
         this.encrytionService = encrytionService;
+    }
+
+    @RequestMapping(value = "/key", method = RequestMethod.POST)
+    public void createKey(final @RequestBody Key key, @CookieValue("access_token") String token) throws VaultException {
+        encrytionService.createKey(key, token);
     }
 
     @RequestMapping(value = "/encrypt", method = RequestMethod.POST)

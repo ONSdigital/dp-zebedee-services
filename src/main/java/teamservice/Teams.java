@@ -5,6 +5,7 @@ import com.bettercloud.vault.Vault;
 import com.bettercloud.vault.VaultConfig;
 import com.bettercloud.vault.VaultException;
 import com.fasterxml.jackson.databind.JsonNode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import teamservice.entities.Team;
@@ -21,6 +22,7 @@ public class Teams {
 
     private Map<String, Team> teamsCache;
 
+    @Autowired
     public Teams(final String token) throws VaultException {
         teamsCache = new HashMap<>();
         RestTemplate template = new CookieRestTemplate(token);
